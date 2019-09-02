@@ -1,0 +1,35 @@
+<!-- <form [formGroup]="form" *ngIf="form?.formErrors as errors" novalidate>
+    <input formControlName="name" placeholder="Name">
+    <p *ngIf="errors.name?.length">
+        Error: {{ errors.name[0] }}
+    </p>
+    <p>Form status: {{ form.status | json }}</p>
+    <p>
+        Form class-validator errors: {{ errors | json}}
+    </p>
+    <p>
+        Form native errors: {{ form?.nativeValidateErrors | async | json}}
+    </p>
+    <p *ngIf="savedItem">
+        Saved item: {{ savedItem | json }}
+    </p>
+    <button (click)="onLoadClick()">Load</button>
+    <button (click)="onClearClick()">Clear</button>
+    <button (click)="onSaveClick()" [disabled]="!form.valid">Save</button>
+</form> -->
+
+<form [formGroup]="form" *ngIf="form?.customValidateErrors | async as errors" novalidate>
+    <input formControlName="name" placeholder="Name">
+    <p *ngIf="errors.name?.length">
+        Error: {{ errors.name[0]}}
+    </p>
+    <p>
+        Observable validatation errors: {{ errors | json }}
+    </p>
+    <p *ngIf="savedItem">
+        Saved item: {{ savedItem | json }}
+    </p>
+    <button (click)="onLoadClick()">Load</button>
+    <button (click)="onClearClick()">Clear</button>
+    <button (click)="onSaveClick()" [disabled]="!form.valid">Save</button>
+</form>
